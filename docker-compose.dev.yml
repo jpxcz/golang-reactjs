@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  nginx:
+    restart: unless-stopped
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports: 
+      - '4000:80'
+  api:
+    hostname: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./api:/go/src/github.com/josepablo93/doc-api
+    restart: unless-stopped
+  client:
+    hostname: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./client/node_modules:/app/nodemodules
+      - ./client:/app

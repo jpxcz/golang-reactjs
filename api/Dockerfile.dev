@@ -1,0 +1,13 @@
+FROM golang:1.10-alpine3.7
+
+RUN apk add --update --no-cache git && \
+  mkdir -p $GOPATH/bin && \
+  go get github.com/codeskyblue/fswatch
+
+RUN apk add --no-cache bash
+
+WORKDIR /go/src/github.com/josepablo93/doc-api
+
+COPY ./.fsw.yml /.fsw.yml
+
+CMD fswatch -config /.fsw.yml 

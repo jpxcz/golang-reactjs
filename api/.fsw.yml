@@ -1,0 +1,16 @@
+desc: doc-api
+triggers:
+- name: ""
+  pattens:
+  - '**/*.*'
+  env:
+    DEBUG: "1"
+  cmd: cd /go/src/github.com/josepablo93/doc-api && go get -t && go vet -composites=false && go build -o /bin/doc-api && /bin/doc-api
+  shell: true
+  delay: 100ms
+  stop_timeout: 500ms
+  signal: KILL
+  kill_signal: ""
+watch_paths:
+- /go/src/github.com/josepablo93/doc-api
+watch_depth: 1
