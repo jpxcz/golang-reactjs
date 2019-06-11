@@ -15,11 +15,15 @@ The docker-compose might not recognize the applications the first time you run t
 To make requests to the Webserver, use the route `localhost:4000/api/vX/`  
 This was made so in the future you can use diferent api versions to make requests. Making the CI/CD more efficient.
 
-## Start on Production
-TODO
+## Start on Production Style
+``` sh
+$ cd appfolder
+$ docker-compose up
+```
 
 ## Next Steps:
-- Production configuration
+- golang dependencies
 - AWS Beanstalk integration
+- env variables
 
 Suggestions to jop0693@gmail.com or via github 
