@@ -1,13 +1,11 @@
-FROM golang:1.12.5-alpine3.9
+# Base image
+FROM golang:1.12.5
+# Get fswatch for hot reload
+RUN go get github.com/codeskyblue/fswatch
+WORKDIR /go/src/github.com/josepablo93/api
 
-RUN apk add --update --no-cache git && \
-  mkdir -p $GOPATH/bin && \
-  go get github.com/codeskyblue/fswatch
-
-RUN apk add --no-cache bash
-
-WORKDIR /go/src/github.com/josepablo93/doc-api
-
+# Copy the fswatch config file to the container
 COPY ./.fsw.yml /.fsw.yml
 
+# Hot reload
 CMD fswatch -config /.fsw.yml 

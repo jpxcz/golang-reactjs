@@ -14,7 +14,7 @@ services:
       context: ./api
       dockerfile: Dockerfile.dev
     volumes:
-      - ./api:/go/src/github.com/josepablo93/doc-api
+      - ./api:/go/src/github.com/josepablo93/api
     restart: unless-stopped
   client:
     hostname: client
